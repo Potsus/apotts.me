@@ -19,23 +19,41 @@ As I see it now I'm looking at using docker containers to seperate out the diffe
 
 The file structure might look like this:
 
-`
+```
 apotts.me
-    keys
+    - keys
         ssh
         whatever
+
     start.sh
-    nginx docker
-    projects (each in a docker image to expose endpoints)
-        php
-        node
-        django
-        flask
-        GeoSlice
-        AppInspiration
-        BrowserCheck
-    Jekyll
-`
+    nginxenv.template #contains the environment variables for nginx
+
+    - nginx docker
+    - projects (each in a docker image to expose endpoints)
+        - php
+            Dockerfile
+
+        - node
+            Dockerfile
+
+        - django
+            Dockerfile
+
+        - flask
+            Dockerfile
+
+        - GeoSlice
+            Dockerfile
+
+        - AppInspiration
+            Dockerfile
+
+        - BrowserCheck
+            Dockerfile
+
+    - Jekyll
+        Dockerfile
+```
 
 
 ## Ideas:
@@ -85,6 +103,52 @@ Find a way to discover new projects and route to them if they pass tests
 - create a route with the project name as the directory pointing at the exposed docker service
 - (later on) create a static page with the site template and and iframe to the project
 - add the route to the static sitemap
+
+
+# Getting Started
+---
+
+first install docker
+
+
+# Notes
+---
+
+### Docker
+Dockerfiles are good for specifying exactly what one image should look like to docker
+docker-compose.yml is for composing multiple docker instances into a coherent app
+
+We're going to use a dockerfile for each project and then compose them all at once so we can bring the entire site up with `docker-compose up`
+
+
+The nginx docker image we are using also contains [NGINX Amplify](https://github.com/nginxinc/docker-nginx-amplify)
+
+in order to use this properly we need to set a couple of environment varaiables on startup, namely:
+- API_KEY: our amplify api key
+- AMPLIFY_IMAGENAME: a name for the instance in amplify, consider changing it for prod or to differentiate between instances
+
+### Nginx
+config files in the container are located in `/etc/nginx/`
+log files are at `/var/log/nginx/`
+
+The command to start nginx in `docker-compose.yml` will also substitute environment variables from `mysite.template`. I'm not sure if i'll need this yet, ssh keys? 
+
+### Jekyll
+This is where all of my static files are generated.
+The generated files in `/Jekyll/_site` are mounted to the Nginx docker container in `docker-compose.yml` and can be modified.
+Running `bundle exec jekyll build --watch` from the jekyll directory will auto rebuild the site whenever changes are detected
+
+
+#### Attaching to an instance
+list all running docker instances with `docker ps`
+list all images using `docker images`
+
+you can attach to the stdout of a container using `docker attach`
+you can get a terminal in a running instance using `docker exec -it <container name> bash` where bash is the command to run on the container
+
+
+
+
 
 
 
