@@ -23,12 +23,12 @@ services:
     #    - ./projects/php:/application
     #    - ./projects/php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
 
-    php:
-        image: php:7-fpm
-        volumes:
-            - ./projects/php/:/php
-            #- ./projects/php/:/var/www/html/php
-            - ./projects/php/:/var/www/html
+    #php:
+    #    image: php:7-fpm
+    #    volumes:
+    #        - ./projects/php/:/php
+    #        #- ./projects/php/:/var/www/html/php
+    #        - ./projects/php/:/var/www/html
 
     #try out a generic php apache server
     #php:

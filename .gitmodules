@@ -1,3 +1,6 @@
 [submodule "jekyll"]
 	path = jekyll
 	url = git@github.com:Potsus/carte-noire.git
+[submodule "projects/GeoSlice"]
+	path = projects/GeoSlice
+	url = git@github.com:Potsus/GeoSlice.git
