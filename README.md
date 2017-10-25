@@ -108,54 +108,9 @@ Find a way to discover new projects and route to them if they pass tests
 # Getting Started
 ---
 
-first install docker
-
-
-# Notes
----
-
-### Docker
-Dockerfiles are good for specifying exactly what one image should look like to docker
-docker-compose.yml is for composing multiple docker instances into a coherent app
-
-We're going to use a dockerfile for each project and then compose them all at once so we can bring the entire site up with `docker-compose up`
-
-
-The nginx docker image we are using also contains [NGINX Amplify](https://github.com/nginxinc/docker-nginx-amplify)
-
-in order to use this properly we need to set a couple of environment varaiables on startup, namely:
-- API_KEY: our amplify api key
-- AMPLIFY_IMAGENAME: a name for the instance in amplify, consider changing it for prod or to differentiate between instances
-
-#### Attaching to an instance
-list all running docker instances with `docker ps`
-list all images using `docker images`
-
-you can attach to the stdout of a container using `docker attach`
-you can get a terminal in a running instance using `docker exec -it <container name> bash` where bash is the command to run on the container
-
-
-### Nginx
-config files in the container are located in `/etc/nginx/`
-log files are at `/var/log/nginx/`
-
-The command to start nginx in `docker-compose.yml` will also substitute environment variables from `mysite.template`. I'm not sure if i'll need this yet, ssh keys? 
-
-### Jekyll
-This is where all of my static files are generated.
-The generated files in `/Jekyll/_site` are mounted to the Nginx docker container in `docker-compose.yml` and can be modified.
-Running `bundle exec jekyll build --watch` from the jekyll directory will auto rebuild the site whenever changes are detected
-
-
-### Git Submodules
-add another git repo as a module with `git submodule add <github link> <submodule name>`
-remove a submodule with:
-```
-git submodule deinit -f -- a/submodule    
-rm -rf .git/modules/a/submodule
-git rm -f a/submodule
-```
-
-
-
-
+- clone the repo
+- install docker
+- fill in secret keys
+- run the repo with `docker-compose up` to view all the logs
+    - include `-d` to run the containers detached
+- go to `localhost:9000` in a web browser
