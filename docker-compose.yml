@@ -1,4 +1,6 @@
-version: "3.1"
+#version: "3.1" #raspberry pi can't do higher than version 2
+#TODO: figure out if we lose anything downgrading version
+version: "2" 
 services:
     ####### Nginx sourcing jekyll output #########
     webserver:
