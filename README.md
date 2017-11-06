@@ -109,6 +109,11 @@ Find a way to discover new projects and route to them if they pass tests
 ---
 
 - clone the repo
+- `git submodule init`
+- `git submodule update`
+- install ruby `sudo apt-get install ruby-dev` or `brew install ruby` or something
+- `gem install bundler`
+- jekyll generate site
 - install docker
 - fill in secret keys
 - run the repo with `docker-compose up` to view all the logs

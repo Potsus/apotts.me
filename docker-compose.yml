@@ -4,7 +4,8 @@ version: "2"
 services:
     ####### Nginx sourcing jekyll output #########
     webserver:
-      image: nginx-amplify
+      #image: nginx-amplify
+      image: nginx
       volumes:
        - ./nginx.conf:/etc/nginx/nginx.conf:ro #overwrite nginx conf with an updated version
        - ./jekyll/_site:/var/www/html:ro #mount the static site to the container where the conf expects it to be
@@ -18,7 +19,8 @@ services:
        - AMPLIFY_IMAGENAME= 'apotts-me-router-dev'
       depends_on:
         - "geoslice"
-      command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx-debug -g 'daemon off;'"
+      #command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx-debug -g 'daemon off;'"
+      command: /bin/bash -c "nginx-debug -g 'daemon off;'"
 
     ######### GeoSlice Setup ############
     geoslicedb:
