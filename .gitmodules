@@ -4,3 +4,6 @@
 [submodule "projects/GeoSlice"]
 	path = projects/GeoSlice
 	url = git@github.com:Potsus/GeoSlice.git
+[submodule "projects/php/src/BrowserCheck"]
+	path = projects/php/src/BrowserCheck
+	url = git@github.com:Potsus/BrowserCheck.git

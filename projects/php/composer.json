@@ -1,0 +1,12 @@
+{
+    "name": "potts/php",
+    "type": "project",
+    "license": "none",
+    "authors": [
+        {
+            "name": "Alex Potts",
+            "email": "lex.potsus@gmail.com"
+        }
+    ],
+    "require": {}
+}

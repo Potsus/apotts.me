@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    php:
+        image: php:7.0-apache
+        volumes:
+            - ./src/:/var/www/html/:ro
+            - ./php.ini:/usr/local/etc/php/php.ini:ro
+        ports: 
+            - "8000:80"
