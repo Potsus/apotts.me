@@ -1,8 +1,9 @@
 #version: "3.1" #raspberry pi can't do higher than version 2
 #TODO: figure out if we lose anything downgrading version
+
 version: "2" 
 services:
-    ####### Nginx sourcing jekyll output #########
+    #######  Nginx sourcing jekyll output  #########
     webserver:
       #image: nginx-amplify
       image: nginx
@@ -22,7 +23,7 @@ services:
       #command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx-debug -g 'daemon off;'"
       command: /bin/bash -c "nginx-debug -g 'daemon off;'"
 
-    ######### GeoSlice Setup ############
+    #########  GeoSlice Setup  ############
     geoslicedb:
         image: mdillon/postgis
         environment:
@@ -46,14 +47,15 @@ services:
           - 8001:8000
         command: python manage.py runserver 0.0.0.0:8000
 
-    ######### End GeoSlice Setup ###########
+    #########  End GeoSlice Setup  ###########
 
 
-    ######### PHP files ############
+    #########  PHP files  ############
     php:
         image: php:7.0-apache
         volumes:
             - ./projects/php/src/:/var/www/html/:ro
             - ./projects/php/php.ini:/usr/local/etc/php/php.ini:ro
-        ports: 
-            - "8000:80"
+
+    #########  Node.js stuff  ##########
+            

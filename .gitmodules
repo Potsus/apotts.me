@@ -7,3 +7,6 @@
 [submodule "projects/php/src/BrowserCheck"]
 	path = projects/php/src/BrowserCheck
 	url = git@github.com:Potsus/BrowserCheck.git
+[submodule "projects/php/src/TFLN"]
+	path = projects/php/src/TFLN
+	url = git@github.com:Potsus/TFLN-your-friends.git
