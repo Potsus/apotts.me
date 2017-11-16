@@ -10,3 +10,6 @@
 [submodule "projects/php/src/TFLN"]
 	path = projects/php/src/TFLN
 	url = git@github.com:Potsus/TFLN-your-friends.git
+[submodule "projects/php/src/ipSource"]
+	path = projects/php/src/ipSource
+	url = git@github.com:Potsus/ipSource.git
